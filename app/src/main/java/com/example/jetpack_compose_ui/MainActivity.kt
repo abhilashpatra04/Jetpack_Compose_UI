@@ -1,6 +1,5 @@
 package com.example.jetpack_compose_ui
 
-
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -13,6 +12,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
+//import androidx.compose.foundation.layout.ColumnScopeInstance.align
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -25,7 +25,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Button
@@ -94,8 +95,8 @@ fun Login_Page(color: Color=DeepGreen,
         ),
         border = BorderStroke(1.dp, Color.LightGray),
         modifier = Modifier
-            .size(width = 380.dp, height = 700.dp)
-            .padding(horizontal = 20.dp, vertical = 80.dp)
+            .size(width = 380.dp, height = 690.dp)
+            .padding(start = 20.dp, end = 20.dp, top = 60.dp, bottom = 140.dp)
     ) {
         Column(
             modifier = Modifier
@@ -154,11 +155,12 @@ fun Login_Page(color: Color=DeepGreen,
                     IconButton(onClick = { passwordVisibility = !passwordVisibility }) {
                         Icon(
                             imageVector = if (passwordVisibility) {
-                                Icons.Filled.Close
+                                Icons.Filled.VisibilityOff
                             } else {
-                                Icons.Filled.CheckCircle
+                                Icons.Filled.Visibility
                             },
-                            contentDescription = if (passwordVisibility) "Hide password" else "Show password"
+                            contentDescription = if (passwordVisibility) "Hide password"
+                            else "Show password"
                         )
                     }
                 }
@@ -185,11 +187,16 @@ fun Login_Page(color: Color=DeepGreen,
             ) {
                 Text(text = "Login")
             }
-            TextButton(onClick = { /* Handle Register */ }) {
-                Text(text = "Don't have an account? Register")
-            }
+
         }
 
+    }
+    Row(modifier = Modifier.padding(start = 60.dp, top = 550.dp, end = 15.dp, bottom = 20.dp)) {
+        Text( "Don't have an account? ",modifier = Modifier.align(Alignment.CenterVertically))
+
+        TextButton(onClick = { /* Handle Register */ }) {
+            Text(text = " Register")
+        }
     }
 }
 
